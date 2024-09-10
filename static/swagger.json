@@ -1,0 +1,109 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Trabalho Banco de Dados - Estudo de Tecnologia",
+    "version": "1.0.7",
+    "title": "Swagger BD",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/usuario": {
+      "post": {
+        "tags": [
+          "CriarUsuario"
+        ],
+        "summary": "Criar Usuário e colocar no arquivo",
+        "description": "",
+        "operationId": "criarUsuario",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados do usuário",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário criado com sucesso",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "Requisição inválida"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ObterUsuarios"
+        ],
+        "summary": "Retorna todos os usuários",
+        "description": "",
+        "operationId": "findUsuarios",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de usuários",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Usuario"
+              }
+            }
+          },
+          "400": {
+            "description": "Requisição inválida"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Usuario": {
+      "type": "object",
+      "properties": {
+        "cpf": {
+          "type": "integer",
+          "format": "int64",
+          "example": 93882372382
+        },
+        
+        "nome": {
+          "type": "string",
+          "example": "Fernando"
+        },
+        
+        "data_nascimento": {
+          "type": "string",
+          "format": "date",
+          "example": "2003-08-08"
+        }
+      }
+    }
+  }
+}
